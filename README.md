@@ -7,14 +7,20 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
 ## Analiza celotne lanske sezone angleske prve nogometne lige (Premier League)
 
-Analiza lanske sezone (2017/18) na podlagi vseh moznih podatkov iz vsake medsebojne tekme dveh ekip in podatkov o predstavah vseh igralcev na teh tekmah.
+Analiza lanske sezone (2017/18) na podlagi vseh moznih podatkov iz vsake medsebojne tekme dveh ekip in o predstavah vseh igralcev na teh tekmah.
 
-Podatke sem nasel na razlicnih spletnih straneh, ki se ukvarjajo z analizo teh podatkov za dolocanje stavniskih kvot in kot pomoc za igro Fantasy Premier League. Nekateri podatki so na voljo v razlicnih oblikah (csv, json).
+Podatke sem nasel na razlicnih spletnih straneh, ki se ukvarjajo z analizo teh podatkov za dolocanje stavniskih kvot in podatkov na voljo za igro Fantasy Premiere League. Nekateri podatki so na voljo v razlicnih oblikah (csv, json).
 
 http://football-data.co.uk/englandm.php
 https://datahub.io/sports-data/english-premier-league
 
-Cilj je precistiti odvecene podatke in jih na koncu predstaviti in primerjati med seboj. Na podlagi povprecnih statistik iz vseh tekem nato primerjati te podatke glede na koncno razvrstitev ekipe. Z uporabo podatkov o predstavah igralcev dolociti pomembnost dolocenega igralca za neko ekipo. Koncna obravnava naj bi primerjala vse igralce med seboj, dolocala najboljse igralce v dolocenih segmentih igre (npr. najvec uspesnih preigravanj, najvec strelov v okvir in izven okvirja(ucinkovitost igralcev), najvec kljucnih podaj,...) in morda pokazala kateri igralci glede na prikazane statistike niso dovolj ucinkoviti.
+Cilj je precistiti odvecene podatke in jih na koncu predstaviti in primerjati med seboj. 
+
+Na podlagi povprecnih statistik iz vseh tekem nato le te primerjati s koncno razvrstitvijo ekipe. Rangiranje ekip glede na posest, stevilo strelov, stevio tekem brez prejetega zadetka, stevilo rumenih in rdecih kartonov,...
+
+Koncna obravnava naj bi primerjala med seboj tudi vse igralce, pokazala najboljse igralce v dolocenih segmentih igre (npr. najvec uspesnih preigravanj, najvec strelov v okvir in izven okvirja(ucinkovitost igralcev), najvec kljucnih podaj,...) in morda pokazala kateri igralci glede na prikazane surove statistike niso pricakovano ucinkoviti.
+
+Z povezavo tekem in igralcev dolocene ekipe dolociti najpomembnejse igralce vsake ekipe, primerjava njihovih rezultatov glede na odsotnosti teh igralcev, kako slabsa forma pomembnih igralcev vpliva na rezultate ekip.
 
 Surovi podatki:
 https://raw.githubusercontent.com/H-Cox/FPL/master/alldata.csv
