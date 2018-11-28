@@ -7,8 +7,20 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
 ## Analiza celotne lanske sezone angleske prve nogometne lige (Premier League)
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal.
-Tukaj boste napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+Analiza lanske sezone (2017/18) na podlagi vseh moznih podatkov iz vsake medsebojne tekme dveh ekip in podatkov o predstavah vseh igralcev na teh tekmah.
+
+Podatke sem nasel na razlicnih spletnih straneh, ki se ukvarjajo z analizo teh podatkov za dolocanje stavniskih kvot in kot pomoc za igro Fantasy Premier League. Nekateri podatki so na voljo v razlicnih oblikah (csv, json).
+
+http://football-data.co.uk/englandm.php
+https://datahub.io/sports-data/english-premier-league
+
+Cilj je precistiti odvecene podatke in jih na koncu predstaviti in primerjati med seboj. Na podlagi povprecnih statistik iz vseh tekem nato primerjati te podatke glede na koncno razvrstitev ekipe. Z uporabo podatkov o predstavah igralcev dolociti pomembnost dolocenega igralca za neko ekipo. Koncna obravnava naj bi primerjala vse igralce med seboj, dolocala najboljse igralce v dolocenih segmentih igre (npr. najvec uspesnih preigravanj, najvec strelov v okvir in izven okvirja(ucinkovitost igralcev), najvec kljucnih podaj,...) in morda pokazala kateri igralci glede na prikazane statistike niso dovolj ucinkoviti.
+
+Surovi podatki:
+https://raw.githubusercontent.com/H-Cox/FPL/master/alldata.csv
+https://datahub.io/sports-data/english-premier-league/r/season-1718.csv
+https://pkgstore.datahub.io/sports-data/english-premier-league/season-1718_json/data/dbd8d3dc57caf91d39ffe964cf31401b/season-1718_json.json
+
 
 ## Program
 
