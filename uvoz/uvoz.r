@@ -27,25 +27,19 @@ uvozi.obcine <- function() {
   return(tabela)
 }
 
-# Funkcija, ki uvozi podatke iz datoteke druzine.csv
-uvozi.druzine <- function(obcine) {
-  data <- read_csv2("podatki/druzine.csv", col_names=c("obcina", 1:4),
-                    locale=locale(encoding="Windows-1250"))
-  data$obcina <- data$obcina %>% strapplyc("^([^/]*)") %>% unlist() %>%
-    strapplyc("([^ ]+)") %>% sapply(paste, collapse=" ") %>% unlist()
-  data$obcina[data$obcina == "Sveti Jurij"] <- "Sveti Jurij ob Ščavnici"
-  data <- data %>% melt(id.vars="obcina", variable.name="velikost.druzine",
-                        value.name="stevilo.druzin")
-  data$velikost.druzine <- parse_number(data$velikost.druzine)
-  data$obcina <- factor(data$obcina, levels=obcine)
-  return(data)
-}
+data <- read_csv("https://raw.githubusercontent.com/H-Cox/FPL/master/alldata.csv",
+                 locale=locale(encoding="UTF-8"))
+
+igralci <- data[, 1:60]
+krogi <- data[, c(1, 61:ncol(data))] %>% melt(id.vars="id") %>%
+  separate("variable", c("krog", "podatek"), ": ") %>%
+  mutate(krog=parse_number(krog))
 
 # Zapišimo podatke v razpredelnico obcine
-obcine <- uvozi.obcine()
+#obcine <- uvozi.obcine()
 
 # Zapišimo podatke v razpredelnico druzine.
-druzine <- uvozi.druzine(levels(obcine$obcina))
+#druzine <- uvozi.druzine(levels(obcine$obcina))
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
