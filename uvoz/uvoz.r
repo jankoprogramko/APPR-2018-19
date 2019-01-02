@@ -34,7 +34,6 @@ igralci <- data[, 1:60]
 krogi <- data[, c(1, 61:ncol(data))] %>% melt(id.vars="id") %>%
   separate("variable", c("krog", "podatek"), ": ") %>%
   mutate(krog=parse_number(krog))
-#haha kok dobr
 
 # Zapišimo podatke v razpredelnico obcine
 #obcine <- uvozi.obcine()
