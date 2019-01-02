@@ -27,14 +27,57 @@
 #  return(tabela)
 #}
 
-data <- read_csv("https://raw.githubusercontent.com/H-Cox/FPL/master/alldata.csv",
-                 locale=locale(encoding="UTF-8"))
+#61 do 102
 
-igralci <- data[, 1:60]
-krogi <- data[, c(1, 61:ncol(data))] %>% melt(id.vars="id") %>%
-  separate("variable", c("krog", "podatek"), ": ") %>%
-  mutate(krog=parse_number(krog))
-#haha kok dobr
+# krogi <- data[c(3, 61:ncol(data))] %>% melt(id.vars="web_name") %>%
+#   separate("variable", c("krog", "podatek"), ": ") %>%             
+#   mutate(krog=parse_number(krog))
+
+#unique(krogi["podatek"])
+
+
+
+library(readr)
+library(tidyr)
+library(reshape2)
+data1 <- read.csv("players_raw.csv")
+igralci_skupaj <- data1[c(57, 47, 31, 22, 1, 6, 21, 41, 58, 40, 36, 37 )]
+ekipe <- c("ARS", "BOU", "BRI", "BUR", "CAR", "CHE", "CRY", "EVE", "FUL", "HUD", "LEI", "LIV", "MCI", "MUN", "NEW", "SOU", "SPU", "WAT", "WSH", "WOL")
+#ekipe1 <-- data11["team"]
+#data11&web_nam
+data2 <- read.csv("merged_gw.csv")
+krogi <-data2[c(-6, -7, -11, -13, -14, -17, -21, -22, -23, -25, -26, -27, -28, -41, -47, -48, -49, -50, -51, -52)]
+#separate(krogi["name"],"variable",c("ime","priimek","id") )
+#krogi2 <- melt(krogi1, id.vars="round",measure.vars=names(krogi[-39]))
+
+
+
+
+
+
+#,locale=locale(encoding="UTF-8")
+# library(reshape2)
+# library(dplyr)
+# library(readr)
+# library(tidyr)
+# data <- read_csv("https://raw.githubusercontent.com/H-Cox/FPL/master/alldata.csv")
+# 
+# igralci <- data[, 1:60]
+# igralci2 <- igralci[c(3, 5, 40:50)]
+# krogi <- data[c(3, 61:ncol(data))] %>% melt(id.vars="web_name") %>%
+#   separate("variable", c("krog", "podatek"), ": ") %>%             
+#   mutate(krog=parse_number(krog))
+
+#krogi2 <- slice(krogi, 3231:10336, 14859:ncol(data))
+#krogi2 <- filter(krogi,podatek=="total_points")
+
+
+# krogi2 <- filter(krogi, podatek == c("minutes", "goals_scored", "assists", "clean_sheets", "goals_conceded", "own_goals", "penalties_saved",
+#                                      "penalties_missed", "yellow_cards", "red_cards", "saves", "open_play_crosses", "big_chances_created",
+#                                      "clearances_blocks_interceptions", "recoveries", "key_passes", "tackles", "winning_goals", "attempted_passes",
+#                                      "completed_passes", "penalties_conceded", "big_chances_missed", "errors_leading_to_goal",
+#                                      "errors_leading_to_goal_attempt", "tackled", "offside", "target_missed", "fouls", "dribbles", "opponent_team",
+#                                      "was_home", "team_goals", "opponent_goals"))
 
 # Zapišimo podatke v razpredelnico obcine
 #obcine <- uvozi.obcine()
@@ -47,3 +90,4 @@ krogi <- data[, c(1, 61:ncol(data))] %>% melt(id.vars="id") %>%
 # datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
 # 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
 # fazah.
+
