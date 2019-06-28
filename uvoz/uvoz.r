@@ -49,7 +49,7 @@ data2 <- read.csv("merged_gw.csv")
 krogi <-data2[c(-6, -7, -11, -13, -14, -17, -21, -22, -23, -25, -26, -27, -28, -41, -47, -48, -49, -50, -51, -52)]
 #separate(krogi["name"],"variable",c("ime","priimek","id") )
 #krogi2 <- melt(krogi1, id.vars="round",measure.vars=names(krogi[-39]))
-
+#krogi3
 
 
 
