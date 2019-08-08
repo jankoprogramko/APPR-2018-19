@@ -27,30 +27,31 @@
 #  return(tabela)
 #}
 
-#61 do 102
-
-# krogi <- data[c(3, 61:ncol(data))] %>% melt(id.vars="web_name") %>%
-#   separate("variable", c("krog", "podatek"), ": ") %>%             
-#   mutate(krog=parse_number(krog))
-
-#unique(krogi["podatek"])
-
-
 
 library(readr)
 library(tidyr)
 library(reshape2)
-data1 <- read.csv("players_raw.csv")
-igralci_skupaj <- data1[c(57, 47, 31, 22, 1, 6, 21, 41, 58, 40, 36, 37 )]
-ekipe <- c("ARS", "BOU", "BRI", "BUR", "CAR", "CHE", "CRY", "EVE", "FUL", "HUD", "LEI", "LIV", "MCI", "MUN", "NEW", "SOU", "SPU", "WAT", "WSH", "WOL")
-#ekipe1 <-- data11["team"]
-#data11&web_nam
-data2 <- read.csv("merged_gw.csv")
-krogi <-data2[c(-6, -7, -11, -13, -14, -17, -21, -22, -23, -25, -26, -27, -28, -41, -47, -48, -49, -50, -51, -52)]
-#separate(krogi["name"],"variable",c("ime","priimek","id") )
-#krogi2 <- melt(krogi1, id.vars="round",measure.vars=names(krogi[-39]))
-#krogi3
+library(dplyr)
 
+#uvoz tabele vseh igralcev, vsi statisticni podatki skupaj
+data1 <- read.csv("players_raw.csv")
+#izločevanje nepomembnih podatkov
+igralci_skupaj <- data1[c(57, 47, 31, 22, 1, 6, 21, 41, 58, 40, 36, 37 )]
+#vektor z imeni ekip
+ekipe <- c("ARS", "BOU", "BRI", "BUR", "CAR", "CHE", "CRY", "EVE", "FUL", "HUD", "LEI", "LIV", "MCI", "MUN", "NEW", "SOU", "SPU", "WAT", "WSH", "WOL")
+
+
+
+#uvoz podatkov za igralce, statisticni podatki loceni po krogih
+data2 <- read.csv("merged_gw.csv")
+#izlocevanje nepomembnih podatkov
+krogi <-data2[c(-6, -7, -11, -13, -14, -17, -21, -22, -23, -25, -26, -27, -28, -41, -47, -48, -49, -50, -51, -52, -56)]
+#locevanje stolpca name na tri različne stolpce
+krogi2 <- separate(krogi,1, c("ime", "priimek", "id"), "_")
+#izločitev stolpca z imenom id
+krogi3 <- krogi2[-3]
+#pretvorba v tidy data
+krogi4 <- melt(krogi3, id.vars = c("ime","priimek","round","opponent_team","was_home"), measure.vars = names(krogi3)[c(-1,-2,-20,-27,-34)], variable.name = "stat_podatek", value.name = "vrednost")
 
 
 
@@ -68,16 +69,6 @@ krogi <-data2[c(-6, -7, -11, -13, -14, -17, -21, -22, -23, -25, -26, -27, -28, -
 #   separate("variable", c("krog", "podatek"), ": ") %>%             
 #   mutate(krog=parse_number(krog))
 
-#krogi2 <- slice(krogi, 3231:10336, 14859:ncol(data))
-#krogi2 <- filter(krogi,podatek=="total_points")
-
-
-# krogi2 <- filter(krogi, podatek == c("minutes", "goals_scored", "assists", "clean_sheets", "goals_conceded", "own_goals", "penalties_saved",
-#                                      "penalties_missed", "yellow_cards", "red_cards", "saves", "open_play_crosses", "big_chances_created",
-#                                      "clearances_blocks_interceptions", "recoveries", "key_passes", "tackles", "winning_goals", "attempted_passes",
-#                                      "completed_passes", "penalties_conceded", "big_chances_missed", "errors_leading_to_goal",
-#                                      "errors_leading_to_goal_attempt", "tackled", "offside", "target_missed", "fouls", "dribbles", "opponent_team",
-#                                      "was_home", "team_goals", "opponent_goals"))
 
 # Zapišimo podatke v razpredelnico obcine
 #obcine <- uvozi.obcine()
