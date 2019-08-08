@@ -51,9 +51,54 @@ krogi2 <- separate(krogi,1, c("ime", "priimek", "id"), "_")
 #izločitev stolpca z imenom id
 krogi3 <- krogi2[-3]
 #pretvorba v tidy data
+krogi5 <- krogi3
 krogi4 <- melt(krogi3, id.vars = c("ime","priimek","round","opponent_team","was_home"), measure.vars = names(krogi3)[c(-1,-2,-20,-27,-34)], variable.name = "stat_podatek", value.name = "vrednost")
 
-
+# pregled_zamenjanih <-function(stolpec) {
+#   for (x in stolpec) {zamenjava}}
+# 
+# zamenjava <- function(i) {
+#   if (i == 1) {
+#   i <-"ARS"
+# } if (i == 2) {
+#   i <- "BOU"
+# } if (i == 3) {
+#   i <- "BRI"
+# } if (i == 4) {
+#   i <- "BUR"
+# } if (i == 5) {
+#   i <- "CAR"
+# } if (i == 6) {
+#   i <- "CHE"
+# } if (i == 7) {
+#   i <- "CRY"
+# } if (i == 8) {
+#   i <- "EVE"
+# } if (i == 9) {
+#   i <- "FUL"
+# } if (i == 10) {
+#   i <- "HUD"
+# } if (i == 11) {
+#   i <- "LEI"
+# } if (i == 12) {
+#   i <- "LIV"
+# } if (i == 13) {
+#   i <- "MCI"
+# } if (i == 14) {
+#   i <- "MUN"
+# } if (i == 15) {
+#   i <- "NEW"
+# } if (i == 16) {
+#   i <- "SOU"
+# } if (i == 17) {
+#   i <- "SPU"
+# } if (i == 18) {
+#   i <- "WAT"
+# } if (i == 19) {
+#   i <- "WSH"
+# } if (i == 20) {
+#   i <- "WOL"
+# }}
 
 
 #,locale=locale(encoding="UTF-8")
