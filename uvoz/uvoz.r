@@ -36,7 +36,7 @@ library(dplyr)
 #uvoz tabele vseh igralcev, vsi statisticni podatki skupaj
 data1 <- read.csv("players_raw.csv")
 #izločevanje nepomembnih podatkov
-igralci_skupaj <- data1[c(57, 47, 31, 22, 1, 6, 21, 41, 58, 40, 36, 37 )]
+igralci_skupaj <- data1[c(19, 42, 47, 31, 22, 1, 6, 21, 41, 58, 40, 36, 37 )]
 #vektor z imeni ekip
 ekipe <- c("ARS", "BOU", "BRI", "BUR", "CAR", "CHE", "CRY", "EVE", "FUL", "HUD", "LEI", "LIV", "MCI", "MUN", "NEW", "SOU", "SPU", "WAT", "WSH", "WOL")
 
@@ -50,55 +50,10 @@ krogi <-data2[c(-6, -7, -11, -13, -14, -17, -21, -22, -23, -25, -26, -27, -28, -
 krogi2 <- separate(krogi,1, c("ime", "priimek", "id"), "_")
 #izločitev stolpca z imenom id
 krogi3 <- krogi2[-3]
+#sprememba stolpca opponent team
+krogi4 = krogi3 %>% mutate(opponent_team = ekipe[opponent_team])
 #pretvorba v tidy data
-krogi5 <- krogi3
-krogi4 <- melt(krogi3, id.vars = c("ime","priimek","round","opponent_team","was_home"), measure.vars = names(krogi3)[c(-1,-2,-20,-27,-34)], variable.name = "stat_podatek", value.name = "vrednost")
-
-# pregled_zamenjanih <-function(stolpec) {
-#   for (x in stolpec) {zamenjava}}
-# 
-# zamenjava <- function(i) {
-#   if (i == 1) {
-#   i <-"ARS"
-# } if (i == 2) {
-#   i <- "BOU"
-# } if (i == 3) {
-#   i <- "BRI"
-# } if (i == 4) {
-#   i <- "BUR"
-# } if (i == 5) {
-#   i <- "CAR"
-# } if (i == 6) {
-#   i <- "CHE"
-# } if (i == 7) {
-#   i <- "CRY"
-# } if (i == 8) {
-#   i <- "EVE"
-# } if (i == 9) {
-#   i <- "FUL"
-# } if (i == 10) {
-#   i <- "HUD"
-# } if (i == 11) {
-#   i <- "LEI"
-# } if (i == 12) {
-#   i <- "LIV"
-# } if (i == 13) {
-#   i <- "MCI"
-# } if (i == 14) {
-#   i <- "MUN"
-# } if (i == 15) {
-#   i <- "NEW"
-# } if (i == 16) {
-#   i <- "SOU"
-# } if (i == 17) {
-#   i <- "SPU"
-# } if (i == 18) {
-#   i <- "WAT"
-# } if (i == 19) {
-#   i <- "WSH"
-# } if (i == 20) {
-#   i <- "WOL"
-# }}
+krogi5 <- melt(krogi4, id.vars = c("ime","priimek","round","opponent_team","was_home"), measure.vars = names(krogi3)[c(-1,-2,-20,-27,-34)], variable.name = "stat_podatek", value.name = "vrednost")
 
 
 #,locale=locale(encoding="UTF-8")
